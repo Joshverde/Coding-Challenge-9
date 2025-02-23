@@ -45,7 +45,7 @@ class Manager extends Employee { //extends manager class from employee class
   console.log(mgr1.getDetails()); // calls and logs method
   console.log(mgr1.calculateBonus()); //calls and logd method
 
-  // Task 3 and 4 - Created Company Class
+// Task 3 and 4 - Created Company Class
 class Company { // declares Company class
     constructor(name) { // creates constrcutor with proeprties 
       this.name = name; // assigns name
@@ -61,9 +61,21 @@ class Company { // declares Company class
         console.log(employee.getDetails()); 
       });
     }
+  
+    calculateTotalPayroll() { // declares the method
+      let total = 0; // sets total to 0
+      this.employees.forEach((employee) => { // uses for Each to add total to each Empolyees annual salary
+        total += employee.calculateAnnualSalary();
+      });
+      return total;
+    }
 }
+//Task 3
 console.log("Task 3") // for console readability
 const company = new Company("TechCorp"); // creates a new company 
 company.addEmployee(emp1); //calls and logs method
 company.addEmployee(mgr1); //calls and logs method
 company.listEmployees(); //calls and logs method
+// Task 4
+console.log("task 4"); // for console readability
+console.log(company.calculateTotalPayroll());

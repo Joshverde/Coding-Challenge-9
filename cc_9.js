@@ -45,7 +45,7 @@ class Manager extends Employee { //extends manager class from employee class
   console.log(mgr1.getDetails()); // calls and logs method
   console.log(mgr1.calculateBonus()); //calls and logd method
 
-// Task 3 and 4 - Created Company Class
+// Tasks 3,4, and 5
 class Company { // declares Company class
     constructor(name) { // creates constrcutor with proeprties 
       this.name = name; // assigns name
@@ -69,13 +69,30 @@ class Company { // declares Company class
       });
       return total;
     }
-}
-//Task 3
-console.log("Task 3") // for console readability
-const company = new Company("TechCorp"); // creates a new company 
-company.addEmployee(emp1); //calls and logs method
-company.addEmployee(mgr1); //calls and logs method
-company.listEmployees(); //calls and logs method
-// Task 4
-console.log("task 4"); // for console readability
-console.log(company.calculateTotalPayroll());
+    promoteToManager(employee, teamSize) {
+      let Employeeindex = this.employees.indexOf(employee); // creates employee index
+      if (Employeeindex !== -1) { // if employee index does not equal -1 the employee is promoted to manager 
+        this.employees[Employeeindex] = new Manager( // creates manager 
+          employee.name, 
+          employee.id, 
+          employee.department,
+          employee.salary,
+          teamSize
+        );
+      }
+    }
+  }
+  //Task 3
+  console.log("Task 3") // for console readability
+  const company = new Company("TechCorp"); // creates a new company 
+  company.addEmployee(emp1); //calls and logs method
+  company.addEmployee(mgr1); //calls and logs method
+  company.listEmployees(); //calls and logs method
+  // Task 4
+  console.log("task 4"); // for console readability
+  console.log(company.calculateTotalPayroll());
+  // Task 5
+  console.log("Task 5") // for console readability 
+  company.promoteToManager(emp1, 3); //calls and logs method
+  company.listEmployees(); //calls and logs both managers
+  
